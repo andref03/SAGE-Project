@@ -150,14 +150,14 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                     </div>
 
                     <div className="grid gap-2">
-                        <div className="flex items-center -mt-3">
+                        {/* <div className="flex items-center -mt-3">
                             <Label htmlFor="password">Senha</Label>
                             {canResetPassword && (
                                 <TextLink href={route('password.request')} className="ml-auto text-sm" tabIndex={5}>
                                     Esqueceu a senha?
                                 </TextLink>
                             )}
-                        </div>
+                        </div> */}
                         <div className="relative">
                             <Input
                                 id="password"
@@ -185,7 +185,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                         </div>
                     </div>
 
-                    <div className="flex items-center space-x-3 -mt-3">
+                    {/* <div className="flex items-center space-x-3 -mt-3">
                         <Checkbox
                             id="remember"
                             name="remember"
@@ -194,7 +194,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             tabIndex={3}
                         />
                         <Label htmlFor="remember">Lembre-se de mim</Label>
-                    </div>
+                    </div> */}
 
                     <Button type="submit" className="mt-4 w-full mt-2" tabIndex={4} disabled={processing}>
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
