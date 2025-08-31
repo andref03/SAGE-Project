@@ -953,11 +953,11 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
 
             {/* Modal de Detalhes do Espaço */}
             {isEspacoModalOpen && agendamento.espaco && (
-                <div 
+                <div
                     className="fixed inset-0 bg-black/30 dark:bg-black/50 flex items-center justify-center z-50"
                     onClick={() => setIsEspacoModalOpen(false)}
                 >
-                    <div 
+                    <div
                         className="bg-card border border-border rounded-xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col"
                         onClick={(e) => e.stopPropagation()}
                     >
@@ -970,7 +970,7 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => setIsEspacoModalOpen(false)}
-                                className="text-muted-foreground hover:text-card-foreground rounded-lg"
+                                className="cursor-pointer text-muted-foreground hover:text-card-foreground rounded-lg"
                             >
                                 <X className="h-5 w-5" />
                             </Button>
@@ -980,7 +980,7 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                         <div className="p-6 space-y-6 overflow-y-auto flex-1 bg-card">
                             {/* Informações Básicas */}
                             <div className="grid grid-cols-1 gap-4">
-                                <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                                <div className="p-4 rounded-lg border bg-sidebar dark:bg-sidebar border-sidebar-border text-sidebar-foreground">
                                     <label className="text-sm font-medium text-muted-foreground">Nome</label>
                                     <p className="text-lg font-semibold text-card-foreground mt-1">{agendamento.espaco.nome}</p>
                                 </div>
@@ -988,17 +988,17 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
 
                             {/* Capacidade e Status */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                                <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                     <label className="text-sm font-medium text-muted-foreground">Capacidade</label>
                                     <div className="flex items-center gap-2 mt-1">
                                         <Users className="h-5 w-5 text-muted-foreground" />
                                         <p className="text-lg text-card-foreground">{agendamento.espaco.capacidade} pessoas</p>
                                     </div>
                                 </div>
-                                <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                                <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                     <label className="text-sm font-medium text-muted-foreground">Status</label>
                                     <div className="mt-1">
-                                        <Badge 
+                                        <Badge
                                             variant={getStatusVariant(agendamento.espaco.status)}
                                             className={`${getEspacoStatusColor(agendamento.espaco.status)} text-sm rounded-full`}
                                         >
@@ -1009,7 +1009,7 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                             </div>
 
                             {/* Localização */}
-                            <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                            <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                 <label className="text-sm font-medium text-muted-foreground">Localização</label>
                                 <div className="flex items-center gap-2 mt-1">
                                     <MapPin className="h-5 w-5 text-muted-foreground" />
@@ -1020,34 +1020,27 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                             </div>
 
                             {/* Responsáveis */}
-                            <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                            <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                 <label className="text-sm font-medium text-muted-foreground">Responsáveis</label>
                                 {(() => {
                                     const responsaveis: Array<any> = [];
-                                    
-                                    // Adicionar o criador do espaço
+
                                     if (agendamento.espaco.createdBy) {
-                                        responsaveis.push({
-                                            ...agendamento.espaco.createdBy,
-                                            tipo: 'Criador'
-                                        });
+                                        responsaveis.push({ ...agendamento.espaco.createdBy, tipo: 'Criador' });
                                     }
                                     
                                     // Adicionar usuários com permissão (excluindo o criador se já estiver na lista)
                                     if (agendamento.espaco.users && agendamento.espaco.users.length > 0) {
                                         agendamento.espaco.users.forEach((user: any) => {
                                             if (!responsaveis.find(r => r.id === user.id)) {
-                                                responsaveis.push({
-                                                    ...user,
-                                                    tipo: 'Com Permissão'
-                                                });
+                                                responsaveis.push({ ...user, tipo: 'Com Permissão' });
                                             }
                                         });
                                     }
-                                    
+
                                     return responsaveis.length > 0 ? (
                                         <div className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                                            {responsaveis.map((responsavel, index) => (
+                                            {responsaveis.map((responsavel) => (
                                                 <div key={responsavel.id} className="bg-background/50 p-3 rounded-md border border-border">
                                                     <div className="flex items-start gap-2">
                                                         <UserAvatar user={responsavel} size="md" />
@@ -1079,15 +1072,15 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                                 })()}
                             </div>
 
-                            {/* Disponibilidade para Reserva */}
-                            <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                            {/* Disponível para Reserva */}
+                            <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                 <label className="text-sm font-medium text-muted-foreground">Disponível para Reserva</label>
                                 <div className="mt-1">
-                                    <Badge 
+                                    <Badge
                                         variant={agendamento.espaco.disponivel_reserva ? 'default' : 'secondary'}
                                         className={`text-sm rounded-full ${
-                                            agendamento.espaco.disponivel_reserva 
-                                                ? 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800' 
+                                            agendamento.espaco.disponivel_reserva
+                                                ? 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800'
                                                 : 'bg-muted text-muted-foreground border-border'
                                         }`}
                                     >
@@ -1098,7 +1091,7 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
 
                             {/* Descrição */}
                             {agendamento.espaco.descricao && (
-                                <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                                <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                     <label className="text-sm font-medium text-muted-foreground">Descrição</label>
                                     <p className="text-card-foreground mt-1 leading-relaxed">{agendamento.espaco.descricao}</p>
                                 </div>
@@ -1106,7 +1099,7 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
 
                             {/* Observações */}
                             {agendamento.espaco.observacoes && (
-                                <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                                <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                     <label className="text-sm font-medium text-muted-foreground">Observações</label>
                                     <p className="text-card-foreground mt-1 leading-relaxed">{agendamento.espaco.observacoes}</p>
                                 </div>
@@ -1118,8 +1111,8 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                                     <label className="text-sm font-medium text-muted-foreground">Recursos Disponíveis</label>
                                     <div className="mt-2 flex flex-wrap gap-2">
                                         {agendamento.espaco.recursos.map((recurso) => (
-                                            <Badge 
-                                                key={recurso.id} 
+                                            <Badge
+                                                key={recurso.id}
                                                 variant="outline"
                                                 className="text-sm rounded-full border-border text-card-foreground"
                                             >
@@ -1130,8 +1123,8 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                                 </div>
                             )}
 
-                            {/* Fotos do Espaço */}
-                            <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                            {/* Fotos */}
+                            <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground">
                                 <div className="flex items-center gap-2 mb-3">
                                     <ImageIcon className="h-5 w-5 text-muted-foreground" />
                                     <label className="text-sm font-medium text-muted-foreground">
@@ -1144,26 +1137,27 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                                 
                                 {agendamento.espaco.fotos && agendamento.espaco.fotos.length > 0 ? (
                                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                        {agendamento.espaco.fotos.filter(foto => foto.url && foto.url !== '/storage/' && foto.url.length > 10).map((foto) => (
-                                            <div 
-                                                key={foto.id} 
-                                                className="relative group cursor-pointer rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-colors"
-                                                onClick={() => handleViewFoto(foto)}
-                                            >
-                                                <img
-                                                    src={foto.url}
-                                                    alt={foto.nome_original}
-                                                    className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-200"
-                                                />
-                                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                                    <ZoomIn className="h-6 w-6 text-white" />
+                                        {agendamento.espaco.fotos
+                                            .filter(foto => foto.url && foto.url !== '/storage/' && foto.url.length > 10)
+                                            .map((foto) => (
+                                                <div
+                                                    key={foto.id}
+                                                    className="relative group cursor-pointer rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-colors"
+                                                    onClick={() => handleViewFoto(foto)}
+                                                >
+                                                    <img
+                                                        src={foto.url}
+                                                        alt={foto.nome_original}
+                                                        className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-200"
+                                                    />
+                                                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                        <ZoomIn className="h-6 w-6 text-white" />
+                                                    </div>
+                                                    <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 truncate">
+                                                        {foto.descricao || 'Sem descrição'}
+                                                    </div>
                                                 </div>
-                                                {/* Descrição sempre visível na parte inferior */}
-                                                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 truncate">
-                                                    {foto.descricao ? foto.descricao : 'Sem descrição'}
-                                                </div>
-                                            </div>
-                                        ))}
+                                            ))}
                                     </div>
                                 ) : (
                                     <div className="text-center py-8 text-muted-foreground">
@@ -1173,8 +1167,8 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                                 )}
                             </div>
 
-                            {/* Informações de Auditoria */}
-                            <div className="bg-muted/30 p-4 rounded-lg border border-border border-t">
+                            {/* Auditoria */}
+                            <div className="p-4 rounded-lg border bg-sidebar border-sidebar-border text-sidebar-foreground border-t">
                                 <h3 className="text-lg font-medium text-card-foreground mb-3">Informações de Auditoria</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                     <div className="bg-background/50 p-3 rounded-md border border-border">
@@ -1200,7 +1194,6 @@ export default function AgendamentosShow({ agendamento, auth, recursosSolicitado
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             )}

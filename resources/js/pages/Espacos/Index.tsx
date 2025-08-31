@@ -509,7 +509,7 @@ export default function EspacosIndex({ auth, espacos, flash }: EspacosIndexProps
                                 variant="ghost"
                                 size="sm"
                                 onClick={closeModal}
-                                className="text-muted-foreground hover:text-card-foreground rounded-lg"
+                                className="cursor-pointer text-muted-foreground hover:text-card-foreground rounded-lg"
                             >
                                 <X className="h-5 w-5" />
                             </Button>
