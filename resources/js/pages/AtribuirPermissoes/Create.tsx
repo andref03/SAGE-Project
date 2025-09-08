@@ -435,10 +435,10 @@ export default function Create({espacos,usID, espacosAtribuidos}: AtribuirPermis
                                 size="sm"
                                 type="button"
                                 onClick={() => handleViewDetails(espaco)}
-                                className="cursor-pointer bg-sidebar border border-transparent text-blue-700
-                                hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700
-                                dark:bg-gray-800 dark:border-transparent dark:text-blue-300
-                                dark:hover:bg-blue-900/30 dark:hover:border-blue-700 dark:hover:text-blue-300"
+                                        className="cursor-pointer bg-gray-200 border border-transparent text-blue-600
+                                        hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700
+                                        dark:bg-gray-200 dark:border-transparent dark:text-blue-600
+                                        dark:hover:bg-blue-50 dark:hover:border-blue-700 dark:hover:text-blue-700"
                             >
                                 <Eye className="h-4 w-4" />
                             </Button>
