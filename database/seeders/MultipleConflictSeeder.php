@@ -25,7 +25,7 @@ class MultipleConflictSeeder extends Seeder
             return;
         }
 
-        $this->command->info('🔥 Criando múltiplos conflitos de teste...');
+        $this->command->info(' Criando múltiplos conflitos de teste...');
 
         // === CONFLITO 1: Auditório hoje (4 agendamentos) ===
         $this->criarConflito1($users, $espacos[0]);
@@ -41,7 +41,7 @@ class MultipleConflictSeeder extends Seeder
             $this->criarConflito4($users, $espacos[0]);
         }
 
-        $this->command->info('✅ Múltiplos conflitos criados com sucesso!');
+        $this->command->info(' Múltiplos conflitos criados com sucesso!');
     }
 
     private function criarConflito1($users, $espaco)
@@ -91,7 +91,7 @@ class MultipleConflictSeeder extends Seeder
             "Múltiplos eventos importantes no {$espaco->nome} em {$hoje->format('d/m/Y')} entre 08:30-12:30"
         );
 
-        $this->command->info("🔴 Conflito 1: {$espaco->nome} - 4 agendamentos (Grupo: {$grupoConflito})");
+        $this->command->info(" Conflito 1: {$espaco->nome} - 4 agendamentos (Grupo: {$grupoConflito})");
     }
 
     private function criarConflito2($users, $espaco)
@@ -131,7 +131,7 @@ class MultipleConflictSeeder extends Seeder
             "Conflito executivo vs RH no {$espaco->nome} em {$amanha->format('d/m/Y')}"
         );
 
-        $this->command->info("🟠 Conflito 2: {$espaco->nome} - 2 agendamentos (Grupo: {$grupoConflito})");
+        $this->command->info(" Conflito 2: {$espaco->nome} - 2 agendamentos (Grupo: {$grupoConflito})");
     }
 
     private function criarConflito3($users, $espaco)
@@ -172,7 +172,7 @@ class MultipleConflictSeeder extends Seeder
             "Conflito acadêmico no {$espaco->nome} em {$depoisAmanha->format('d/m/Y')}"
         );
 
-        $this->command->info("🟡 Conflito 3: {$espaco->nome} - 3 agendamentos (Grupo: {$grupoConflito})");
+        $this->command->info(" Conflito 3: {$espaco->nome} - 3 agendamentos (Grupo: {$grupoConflito})");
     }
 
     private function criarConflito4($users, $espaco)
@@ -218,6 +218,6 @@ class MultipleConflictSeeder extends Seeder
             "Grande conflito noturno no {$espaco->nome} em {$proximaSemana->format('d/m/Y')} - 5 eventos simultâneos"
         );
 
-        $this->command->info("🔵 Conflito 4: {$espaco->nome} - 5 agendamentos (Grupo: {$grupoConflito})");
+        $this->command->info(" Conflito 4: {$espaco->nome} - 5 agendamentos (Grupo: {$grupoConflito})");
     }
 }
