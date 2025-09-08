@@ -1498,8 +1498,11 @@ export default function AgendamentosIndex({ agendamentos, espacos, filters, auth
                                                     variant="outline"
                                                     size="sm"
                                                     onClick={() => handleEventClick(agendamento)}
-                                                    className="hover:border-blue-500 group"
-                                                >
+                                                      className="cursor-pointer bg-gray-200 border border-transparent text-blue-600
+                                                        hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700
+                                                        dark:bg-gray-200 dark:border-transparent dark:text-blue-600
+                                                        dark:hover:bg-blue-50 dark:hover:border-blue-700 dark:hover:text-blue-700"
+                                                    >
                                                     <Eye className="h-4 w-4 group-hover:text-blue-500" />
                                                 </Button>
                                             </TooltipTrigger>
@@ -1515,7 +1518,11 @@ export default function AgendamentosIndex({ agendamentos, espacos, filters, auth
                                                         variant="outline"
                                                         size="sm"
                                                         onClick={() => router.get(`/agendamentos/${agendamento.id}/editar`)}
-                                                    >
+                                                        className="cursor-pointer bg-gray-200 border border-transparent text-gray-600
+                                                        hover:bg-gray-300 hover:border-gray-400 hover:text-gray-800
+                                                        dark:bg-gray-200 dark:border-transparent dark:text-gray-600
+                                                        dark:hover:bg-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-800"
+                                                >
                                                         <Pencil className="h-4 w-4" />
                                                     </Button>
                                                 </TooltipTrigger>
@@ -1532,8 +1539,11 @@ export default function AgendamentosIndex({ agendamentos, espacos, filters, auth
                                                         variant="outline"
                                                         size="sm"
                                                         onClick={() => handleForceDelete(agendamento)}
-                                                        className="text-orange-600 hover:text-orange-700 hover:bg-orange-50"
-                                                    >
+                                                        className="cursor-pointer bg-gray-200 border border-transparent text-red-600
+                                                        hover:bg-[#F26326]/10 hover:border-[#F26326]/60 hover:text-[#F26326]
+                                                        dark:bg-gray-200 dark:border-transparent dark:text-red-600
+                                                        dark:hover:border-[#F26326]/60 dark:hover:text-[#F26326]"
+                                                >
                                                         <Trash2 className="h-4 w-4" />
                                                     </Button>
                                                 </TooltipTrigger>
