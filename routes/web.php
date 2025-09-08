@@ -17,7 +17,36 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
+        $selectedDate = request('date');
+        $day = $selectedDate ? \Carbon\Carbon::parse($selectedDate)->toDateString() : now()->toDateString();
+        $userId = auth()->id();
+
+        $agendamentosHoje = \App\Models\Agendamento::with(['espaco:id,nome'])
+            ->where('user_id', $userId)
+            ->whereIn('status', ['pendente', 'aprovado'])
+            ->where(function ($q) use ($day) {
+                $q->whereDate('data_inicio', '<=', $day)
+                  ->whereDate('data_fim', '>=', $day);
+            })
+            ->orderBy('hora_inicio')
+            ->get([
+                'id',
+                'titulo',
+                'hora_inicio',
+                'hora_fim',
+                'status',
+                'espaco_id',
+                'color_index',
+                'data_inicio',
+                'data_fim',
+                'user_id',
+                'justificativa',
+            ]);
+
+        return Inertia::render('dashboard', [
+            'agendamentosHoje' => $agendamentosHoje,
+            'selectedDate' => $day,
+        ]);
     })->name('dashboard');
 
     // Rotas para gerenciar usuários (APENAS para usuários com permissão de administrador)
