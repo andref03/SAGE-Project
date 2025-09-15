@@ -178,10 +178,10 @@ export default function RecursosIndex({ auth, recursos }: RecursosIndexProps) {
                                 variant="outline"
                                 size="sm"
                                 asChild
-                                className="cursor-pointer bg-sidebar border border-transparent
-                                hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700
-                                dark:bg-gray-800 dark:hover:bg-blue-900/30 dark:hover:border-blue-700 dark:hover:text-blue-300
-                                text-black dark:text-white"
+                                className="cursor-pointer bg-gray-200 border border-transparent text-gray-600
+                                    hover:bg-gray-300 hover:border-gray-400 hover:text-gray-800
+                                    dark:bg-gray-200 dark:border-transparent dark:text-gray-600
+                                    dark:hover:bg-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-800"
                             >
                                 <Link href={`/recursos/${recurso.id}/editar`}>
                                     <Pencil className="h-4 w-4" />
@@ -199,9 +199,10 @@ export default function RecursosIndex({ auth, recursos }: RecursosIndexProps) {
                                     <Button
                                         variant="outline"
                                         size="sm"
-                                        className="cursor-pointer bg-sidebar border border-transparent text-black dark:text-white
-                                        hover:bg-[#F26326]/10 hover:border-[#F26326]/60 hover:text-[#F26326]
-                                        dark:hover:bg-[#F26326]/30 dark:hover:border-[#F26326]/70 dark:hover:text-[#F26326]"
+                                        className="cursor-pointer bg-gray-200 border border-transparent text-red-600
+                                            hover:bg-[#F26326]/10 hover:border-[#F26326]/60 hover:text-[#F26326]
+                                            dark:bg-gray-200 dark:border-transparent dark:text-red-600
+                                            dark:hover:border-[#F26326]/60 dark:hover:text-[#F26326]"
                                     >
                                         <Trash2 className="h-4 w-4" />
                                     </Button>
@@ -218,16 +219,16 @@ export default function RecursosIndex({ auth, recursos }: RecursosIndexProps) {
                                 </AlertDialogTitle>
                                 <AlertDialogDescription>
                                     Tem certeza que deseja excluir o recurso {recurso.nome}?
-                                    Esta ação não pode ser desfeita e pode afetar espaços vinculados.
+                                    Esta ação não pode ser desfeita.
                                 </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
-                                <AlertDialogCancel className='cursor-pointer'>
+                                <AlertDialogCancel className="cursor-pointer">
                                     Cancelar
                                 </AlertDialogCancel>
                                 <AlertDialogAction
                                     onClick={() => handleDelete(recurso)}
-                                    className="bg-red-600 hover:bg-red-700 cursor-pointer"
+                                    className="cursor-pointer bg-red-600 hover:bg-red-700"
                                 >
                                     Excluir
                                 </AlertDialogAction>

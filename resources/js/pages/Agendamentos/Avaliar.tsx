@@ -1274,7 +1274,12 @@ export default function AvaliarAgendamentos({ agendamentos, espacos, estatistica
                                             <div className="flex items-center gap-2 ml-4">
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
-                                                        <Button variant="outline" size="sm" asChild className="cursor-pointer hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:border-blue-700 dark:hover:text-blue-300">
+                                                        <Button variant="outline" size="sm" asChild 
+                                                            className="cursor-pointer bg-gray-200 border border-transparent text-blue-600
+                                                                hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700
+                                                                dark:bg-gray-200 dark:border-transparent dark:text-blue-600
+                                                                dark:hover:bg-blue-50 dark:hover:border-blue-700 dark:hover:text-blue-700"
+                                                            >                                                        
                                                             <Link href={`/agendamentos/${agendamento.id}?return_url=${encodeURIComponent(generateReturnUrl())}`}>
                                                                 <Eye className="h-4 w-4" />
                                                             </Link>
@@ -1294,8 +1299,11 @@ export default function AvaliarAgendamentos({ agendamentos, espacos, estatistica
                                                                     variant="outline"
                                                                     size="sm"
                                                                     onClick={() => handleApproveConfirm(agendamento)}
-                                                                    className="text-green-600 hover:text-green-700 hover:bg-green-50 hover:border-green-300 cursor-pointer dark:hover:bg-green-900/30 dark:hover:border-green-700 dark:hover:text-green-300"
-                                                                >
+                                                                    className="cursor-pointer bg-gray-200 border border-transparent text-green-600
+                                                                        hover:bg-green-50 hover:border-green-300 hover:text-green-700
+                                                                        dark:bg-gray-200 dark:border-transparent dark:text-green-600
+                                                                        dark:hover:bg-green-50 dark:hover:border-green-700 dark:hover:text-green-700"
+                                                                    >
                                                                     <Check className="h-4 w-4" />
                                                                 </Button>
                                                             </TooltipTrigger>
@@ -1310,8 +1318,11 @@ export default function AvaliarAgendamentos({ agendamentos, espacos, estatistica
                                                                     variant="outline"
                                                                     size="sm"
                                                                     onClick={() => handleReject(agendamento)}
-                                                                    className="text-red-600 hover:text-red-700 hover:bg-red-50 hover:border-red-300 cursor-pointer dark:hover:bg-red-900/30 dark:hover:border-red-700 dark:hover:text-red-300"
-                                                                >
+                                                                        className="cursor-pointer bg-gray-200 border border-transparent text-red-600
+                                                                        hover:bg-[#F26326]/10 hover:border-[#F26326]/60 hover:text-[#F26326]
+                                                                        dark:bg-gray-200 dark:border-transparent dark:text-red-600
+                                                                        dark:hover:border-[#F26326]/60 dark:hover:text-[#F26326]"
+                                                                        >
                                                                     <X className="h-4 w-4" />
                                                                 </Button>
                                                             </TooltipTrigger>
